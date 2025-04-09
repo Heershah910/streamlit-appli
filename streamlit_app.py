@@ -1,18 +1,14 @@
 import streamlit as st
-from joblib import load
 import numpy as np
 import pickle
-import os
 
 @st.cache_resource
-
 def load_model():
     with open("models/model.pkl", "rb") as f:
         return pickle.load(f)
 
-
-model = load_model()
-
+model_data = load_model()
+model = model_data['model']
 scaler = model_data['scaler']
 
 st.title('🌦️ Weather Rainfall Prediction')
@@ -35,3 +31,4 @@ if st.button('Predict Rainfall'):
     
     st.subheader('Prediction Result')
     st.metric(label="Expected Rainfall", value=f"{prediction[0]:.2f} mm")
+
