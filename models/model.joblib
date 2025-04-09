@@ -1,1 +1,4 @@
+git add models/model.pkl
+git commit -m "Added model file"
+git push
 
