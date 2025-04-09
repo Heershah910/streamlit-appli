@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
-import pickle
+from joblib import dump
 import os
 
 # Create synthetic weather dataset
@@ -39,6 +39,6 @@ os.makedirs('models', exist_ok=True)
 
 # Save model and scaler
 with open('models/weather_model.pkl', 'wb') as f:
-    pickle.dump({'model': model, 'scaler': scaler}, f)
+    dump(model, 'models/model.joblib')
 
 print("Model trained and saved successfully!")
