@@ -1,5 +1,5 @@
 import streamlit as st
-import pickle
+from joblib import load
 import numpy as np
 import os
 
@@ -7,8 +7,7 @@ import os
 def load_model():
     # Get the correct path for Streamlit Cloud
     model_path = os.path.join(os.path.dirname(__file__), 'models/weather_model.pkl')
-    with open(model_path, 'rb') as f:
-        return pickle.load(f)
+    return load("models/model.joblib")
 
 model_data = load_model()
 model = model_data['model']
