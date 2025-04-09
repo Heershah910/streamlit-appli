@@ -4,13 +4,15 @@ import numpy as np
 import os
 
 @st.cache_resource
-def load_model():
-    # Get the correct path for Streamlit Cloud
-    model_path = os.path.join(os.path.dirname(__file__), 'models/weather_model.pkl')
-    return load("models/model.joblib")
+import pickle
 
-model_data = load_model()
-model = model_data['model']
+def load_model():
+    with open("models/model.pkl", "rb") as f:
+        return pickle.load(f)
+
+
+model = load_model()
+
 scaler = model_data['scaler']
 
 st.title('🌦️ Weather Rainfall Prediction')
