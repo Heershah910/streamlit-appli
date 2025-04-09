@@ -1,10 +1,10 @@
 import streamlit as st
 from joblib import load
 import numpy as np
+import pickle
 import os
 
 @st.cache_resource
-import pickle
 
 def load_model():
     with open("models/model.pkl", "rb") as f:
